@@ -27,7 +27,7 @@ the mig 29 is still in service with many air forces today
 ###### the mig29 served in the following wars:
 - cold war
 - Kuwait invasion
-- modern day russia and ukaraine conflict
+- modern day russia and ukraine conflict
 
 ---
 ![bg left fit](https://api.time.com/wp-content/uploads/2023/03/poland-plane-1.jpg)

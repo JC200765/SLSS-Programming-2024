@@ -8,11 +8,11 @@ Chinese_City = ["Harbin", "Shenyang", "Beijing"," Tianjin", "Jinan", "Changchun"
 def city_suggestion(city):
 
     if city == "Harbin": 
-        return "Harbin, the capital of HeiLongJiang Province in the Northernmost part of china includes many diverse Russian Architecture, you can visit the Saint Sophia's Church, Harbin Ice and Snow World (maybe in winter only, Bingxue Big World, Harbin Stalin Park, Sun island or Siberia Tiger Park "
+        return "Harbin, the capital of HeiLongJiang Province in the Northernmost part of china includes many diverse Russian Architecture, you can visit the Saint Sophia's Church, Harbin Ice and Snow World (maybe in winter only), Bingxue Big World, Harbin Stalin Park, Sun island or Siberia Tiger Park "
     elif city == "Shenyang": 
         return "Shenyang is the Capital of China's NorthEast Provinve of Liaoning. In this city you visit the Zhaoling Tomb where the actual bodies of The first Qing Dynasty's emperor and empress are laid down at, Qipan Mountain,Mukden Palace and Shenyang Dongling Park"
     elif city == "Beijing": 
-        return "Beijing is China's capital city and it holds vast knowledge in the terms of history, you can visit the Great wall of China, The Forbidden City, or visit the Body of Dictator Mao Ze Dong in the Mausoluem, of course you can also vist the Temple of Heaven.     (My First and favourite Home City"
+        return "Beijing is China's capital city and it holds vast knowledge in the terms of history, you can visit the Great wall of China, The Forbidden City, or visit the Body of Dictator Mao Ze Dong in the Mausoluem, of course you can also vist the Temple of Heaven.     (My First and favourite Home City)"
     elif city == "Tianjin":
         return "Tianjin, is a port city that has 600 years of history, you visit Guwenhua street, Haihe river or my personal favourite Tianjin Binhai Aircraft carrier theme park "
     elif city == "Jinan":
@@ -40,7 +40,7 @@ def city_suggestion(city):
     elif city == "Xian":
         return "Capital of Shaanxi province, I recommend: Emperor Qinshihuangs Mausoleum Site Museum, Giant wild doose pagoda, Fortifications of Xi'an, Ancient city wall, Huaqinggong relic site and etc" 
     elif city == "Chongqing":
-        return "Chongqing is a city that is unheard of in western society, but in the modern day it as gained more popularity i recommend going to: Fengdu Ghost City Three Gorges Museum, Ciqikou(may be far, Three Natural Bridges, Hongyadong(View the city skyline at day and night, Jiefangbei CBD and etc (you may even see Mr. Mergens there viewing the city you can also plan a trip there with him."
+        return "Chongqing is a city that is unheard of in western society, but in the modern day it as gained more popularity i recommend going to: Fengdu Ghost City Three Gorges Museum, Ciqikou(may be far, Three Natural Bridges, Hongyadong(View the city skyline at day and night, Jiefangbei CBD and etc (you may even see Mr. Mergens there viewing the city you can also plan a trip there with him)."
     elif city == "Chengdu":
         return "capital of Sichuan province I recommend: Chengdu research Base of Giant Panda Breeding, Wenshu Yuan Monastry, Chuanxi Road and etc"
     elif city == "Lhasa":
@@ -50,7 +50,7 @@ def city_suggestion(city):
     elif city == "Nanning": 
         return "Capital of the Guangxi province, and very close to the Vietnm border i recommend: Yi Ling Yan, LongXiang Tower, Chaoyang Square, Qingxiu mountain Scenic Spot Zone, Nanhu Park, Xiningexpo Park and etc"
     elif city == "Haikou":
-        return "Capital of Hainan Province which is the basic Hawaii of China i recommend: Guanlan Lake feng Xiaogang Film Commune, the tomb of Hairui, Trop Wildlife Park and Botancial Garden and etc (ou can honestly fly towards the other city in Hainan province called Sanya. over there you can do even more Hawaii stuff"
+        return "Capital of Hainan Province which is the basic Hawaii of China i recommend: Guanlan Lake feng Xiaogang Film Commune, the tomb of Hairui, Trop Wildlife Park and Botancial Garden and etc (you can honestly fly towards the other city in Hainan province called Sanya. over there you can do even more Hawaii stuff)"
     elif city == "Guiyang":
         return "Capital of Guizhou Province, I recommend: Jiaxiu Building, Qingyan Ancient Town, Yelang Valley, Qianlingshan Park and etc"
     elif city == "Hohhot":
@@ -85,11 +85,31 @@ print(chosen_city)
 print(city_suggestion(chosen_city))
 
 # Loop forever
-    # user can either like ----> goes into a loop with infinite text of (I really recommend you going someday)
-    # Ask the user if they like the suggestion
-        # If they do, inifintely loop the text (I really recommend...)
-    # or skip ----> leads to computer printing another city and its suggestion from the list
-        # Else it repeats to give another suggestion
+
+# user can either like ----> goes into a loop with infinite text of (I really recommend you going someday)
+# Ask the user if they like the suggestion
+
+
+person_answer = input("Do you like the suggest City to travel in China?\n")
+while person_answer not in ["yes", "no", "yeah", "nah"]:
+    person_answer = input("无效")
+# text = input("Do you like the suggest City to travel in China?\n")
+
+if person_answer == "yes":
+    print("Awesome, I recommend you going on day")
+    # TODO: If they do, inifintely loop the text (I really recommend...)
+ 
+
+elif person_answer == "no":
+    print("Apologies, I hope you still can travel there one day")
+# else:
+#     print("无效")
+    # Say Great!
+
+# Else it repeats to give another suggestion
+    # Say Sorry!
+
+# TODO: or skip ----> leads to computer printing another city and its suggestion from the list
 
 
 

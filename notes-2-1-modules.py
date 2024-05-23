@@ -35,14 +35,15 @@ def main():
         else:
             other += 1
 
-
-
-
-
-
     print(f"Heads: {heads}")
     print(f"Tails: {tails}")
     print(f"others: {other}")
+
+    city_list = ["Vancouver", "Richmond", "Shanghai", "Beijing"]
+
+    # Randomly choose city from the list
+    chosen_city = random.choice(city_list)
+    print(chosen_city)
 
 
 

@@ -1,6 +1,8 @@
 # pygame-example-shmup.py
 # Shoot 'em up
 
+import random
+
 import pygame as pg
 
 # --CONSTANTS--
@@ -20,6 +22,9 @@ SCREEN_SIZE = (WIDTH, HEIGHT)
 MISSILE = pg.image.load("./Images/missile.svg")
 MISSILE = pg.transform.scale(MISSILE, (MISSILE.get_width() // 100, MISSILE.get_height() // 100))
 MISSILE = pg.transform.rotate(MISSILE, -90)
+
+NUM_ENEMIES = 1
+
 
 
 # TODO: Player class
@@ -84,6 +89,35 @@ class Bullet(pg.sprite.Sprite):
 # TODO: Enemies
 #      - Move left to right to left
 
+class Enemy(pg.sprite.Sprite):
+    def __init__(self, centerx: int, centery: int):
+        """
+        Params:
+            centerx: center x spawn of the enemy
+            centery: center y spawn of the enemy
+        """
+        super().__init__()
+
+        self.image = pg.image.load("./Images/su27.png")
+        self.image = pg.transform.scale(self.image, (self.image.get_width() // 5, self.image.get_height() // 5))
+        self.rect = self.image.get_rect()
+        self.rect.centerx, self.rect.centery = centerx, centery
+
+        self.vel_x = 4
+        self.vel_y = 2
+
+    def update(self):
+        # Movement
+        self.rect.x += self.vel_x
+        self.rect.y += self.vel_y
+
+        # Bounce in the x-axis
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+            self.vel_x *= -1
+        if self.rect.left < 0:
+            self.rect.left = 0
+            self.vel_x *= -1
 
 def start():
     """Environment Setup and Game Loop"""
@@ -97,11 +131,21 @@ def start():
 
     # All sprites go in this sprite Group
     all_sprites = pg.sprite.Group()
+    bullet_sprites = pg.sprite.Group()
+    enemy_sprites = pg.sprite.Group()
 
     # Create the Player sprite object
     player = Player()
 
     all_sprites.add(player)
+
+    # Create and spawn all enemies randomly in y
+    for _ in range(NUM_ENEMIES):
+        enemy = Enemy(
+            random.randrange(20, WIDTH - 20), random.randrange(20, HEIGHT - 400)
+        )
+        all_sprites.add(enemy)
+        enemy_sprites.add(enemy)
 
     pg.display.set_caption("Shoot 'Em Up")
 
@@ -112,10 +156,20 @@ def start():
             if event.type == pg.QUIT:
                 done = True
             if event.type == pg.MOUSEBUTTONDOWN:
-                all_sprites.add(Bullet((player.rect.centerx, player.rect.top)))
+                bullet = Bullet((player.rect.centerx, player.rect.top))
+                all_sprites.add(bullet)
+                bullet_sprites.add(bullet)
 
         # --- Update the world state
         all_sprites.update()
+
+        # Collision between bullets and enemies
+        for bullet in bullet_sprites:
+            enemies_hit = pg.sprite.spritecollide(bullet, enemy_sprites, False)
+
+            for enemy in enemies_hit:
+                enemy.kill()
+                bullet.kill()
 
         # --- Draw items
         screen.fill(BLACK)
@@ -128,6 +182,7 @@ def start():
         # --- Tick the Clock
         clock.tick(60)  # 60 fps
 
+    pg.quit()
 
 
 def main():
